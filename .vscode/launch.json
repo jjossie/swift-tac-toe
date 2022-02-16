@@ -1,0 +1,33 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug swift-tac-toe",
+            "program": "${workspaceFolder:swift-tac-toe}/.build/debug/swift-tac-toe",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-tac-toe}",
+            "preLaunchTask": "swift: Build Debug swift-tac-toe"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release swift-tac-toe",
+            "program": "${workspaceFolder:swift-tac-toe}/.build/release/swift-tac-toe",
+            "args": [],
+            "cwd": "${workspaceFolder:swift-tac-toe}",
+            "preLaunchTask": "swift: Build Release swift-tac-toe"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Test swift-tac-toe",
+            "program": "${workspaceFolder:swift-tac-toe}/.build/debug/swift-tac-toePackageTests.xctest",
+            "cwd": "${workspaceFolder:swift-tac-toe}",
+            "env": {
+                "path": "C:\\Library\\Developer\\Platforms\\Windows.platform\\Developer\\Library\\XCTest-development\\usr\\bin;${env:PATH}"
+            },
+            "preLaunchTask": "swift: Build All"
+        }
+    ]
+}
