@@ -15,7 +15,7 @@ struct Coord {
         }
     }
 
-    func display() -> String {
+    func render() -> String {
         var yChar: Character = " "
         if y == 0 {
             yChar = "A"

@@ -1,22 +1,46 @@
 
 class Game {
-
-    var board: Board
-    var turn: Character
-
-    init(){
-        board = Board()
-        turn = "X"
-    }
-
+    
     let colAliases: Dictionary<Character, Int> = [
         "A": 0,
         "B": 1,
         "C": 2
     ]
 
-    func promptCoord() -> Coord? {
-        print("Select a square: ")
+    var board: Board
+    var turn: Character
+
+    init() {
+        board = Board()
+        turn = "X"
+    }
+
+    func playTurn() {
+        print(board.render())
+        var finished = false
+        while (!finished){
+            if let coord = promptCoord(prompt: "\(turn)> ") {
+                let result = board.place(spot: coord, player: turn)
+                if result == .success {
+                    nextPlayer()
+                    finished = true
+                } else if result == .illegalMove {
+                    error("Spot is already taken")
+                }
+            }
+        }
+    }
+
+    private func nextPlayer(){
+        if turn == "X"{
+            turn = "O"
+        } else if turn == "O" {
+            turn = "X"
+        }
+    }
+
+    func promptCoord(prompt: String) -> Coord? {
+        print(prompt)
         let allowedNumbers = 1..<4
         var row = -1
         var col = -1

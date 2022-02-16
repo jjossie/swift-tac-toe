@@ -1,9 +1,9 @@
 
-func testDriverPromptCoord(){
+func testDriverPromptCoord() {
     let game = Game()
     while true {
-        if let c2 = game.promptCoord() {
-            print(c2.display())
+        if let c2 = game.promptCoord(prompt: "Test square: ") {
+            print(c2.render())
         } else {
             print("promptCoord didnt work")
         }
@@ -11,14 +11,20 @@ func testDriverPromptCoord(){
 }
 
 func testBoardPlace() {
-    var b = Board()
+    let b = Board()
     if b.place(spot: Coord(1, 1), player: "X") == BoardMessage.success {
         print("Success")
-        print(b.display())
+        print(b.render())
     } else {
         print("Failure")
     }
 }
 
+func main() {
+    let game = Game()
+    while true{
+        game.playTurn()
+    }
+}
 
-testBoardPlace()
+main()
